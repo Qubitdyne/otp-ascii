@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# Name: otp-ascii-gen, Version: 1.3
+# Discription: One-time Pad ASCII Graph Generator.
+# Author: Nikolas Britton
+#     E-mail: ytvzwld.mcteezy@rxltw.nzx (caesar, 11)
+# Copyright 2021 Nikolas Britton, Apache 2.0 License
+# Notes: Imagemagick is a dependency.
+
+test -x /usr/local/bin/convert || {
+    echo "Imagemagick's convert utility is a dependency, please install it first.";
+    exit 1;
+}
+
+timestamp=$(date +%s);
+
+function horizontal-legend () {
+    printf 'ab#';
+    for ((index_ab=33;index_ab<127;index_ab++)) do
+        printf "\\$(printf %03o "${index_ab}")";
+    done;
+    echo;
+
+    printf 'cd#';
+    for ((index_cd=126;index_cd>32;index_cd--)) do
+        printf "\\$(printf %03o "${index_cd}")";
+    done;
+    echo;
+}
+
+function otp-ascii () {
+    horizontal-legend;
+
+    printf '#%.0s' {1..97};
+    echo;
+
+    for ((index_ac=33,index_bd=126,switch=0;index_ac<127;index_ac++,index_bd--)) do
+ 	printf "\\$(printf %03o "${index_ac}")";
+	printf "\\$(printf %03o "${index_bd}")";
+        printf '#';
+        LC_CTYPE=C < /dev/urandom tr -cd [:graph:] | tr -d '\n' | fold -w 94 | head -n 1;
+    done;
+}
+
+echo > otp-ascii-${timestamp}.txt;
+
+for k in $(seq -w 0 20); do
+    printf "KEY$k " >> otp-ascii-${timestamp}.txt;
+    LC_CTYPE=C < /dev/urandom tr -cd [:graph:] | tr -d '\n' | fold -w 94 | head -n 1 | sed -e 's/\(.\)/\1 /g' >> otp-ascii-${timestamp}.txt;
+done;
+
+printf "SHA01 " >> otp-ascii-${timestamp}.txt;
+shasum -a 512256 otp-ascii-${timestamp}.txt >> otp-ascii-${timestamp}.txt;
+
+otp-ascii | sed -e 's/\(.\)/\1 /g' >> otp-ascii-${timestamp}.txt;
+printf "SHA02 " >> otp-ascii-${timestamp}.txt;
+shasum -a 512256 otp-ascii-${timestamp}.txt >> otp-ascii-${timestamp}.txt;
+
+convert -density 600 -units pixelsperinch -size 12000x12000 xc:white -font "Monaco" -pointsize 8 -fill black -annotate +15+15 "@otp-ascii-${timestamp}.txt" -trim +repage otp-ascii-${timestamp}.png;
+
+#rm otp-ascii-${timestamp}.txt;
