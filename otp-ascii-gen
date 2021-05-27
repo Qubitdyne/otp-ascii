@@ -34,7 +34,7 @@ function otp-ascii () {
     printf '#%.0s' {1..97};
     echo;
 
-    for ((index_ac=33,index_bd=126,switch=0;index_ac<127;index_ac++,index_bd--)) do
+    for ((index_ac=33,index_bd=126;index_ac<127;index_ac++,index_bd--)) do
  	printf "\\$(printf %03o "${index_ac}")";
 	printf "\\$(printf %03o "${index_bd}")";
         printf '#';
