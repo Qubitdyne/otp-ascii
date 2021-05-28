@@ -1,16 +1,10 @@
 #!/bin/bash
 
-# Name: otp-ascii-gen, Version: 1.5
+# Name: otp-ascii-gen, Version: 1.4.1
 # Description: One-time Pad ASCII Graph Generator.
 # Author: Nikolas Britton
 #     E-mail: ytvzwld.mcteezy@rxltw.nzx (caesar, 11)
 # Copyright 2021 Nikolas Britton, Apache 2.0 License
-# Notes: Imagemagick is a dependency.
-
-test -x /usr/local/bin/convert || {
-    echo "Imagemagick's convert utility is a dependency, please install it first.";
-    exit 1;
-}
 
 timestamp=$(date +%s);
 
@@ -55,8 +49,6 @@ shasum -a 512256 otp-ascii-${timestamp}.txt >> otp-ascii-${timestamp}.txt;
 otp-ascii | sed -e 's/\(.\)/\1 /g' >> otp-ascii-${timestamp}.txt;
 printf "SHA02 " >> otp-ascii-${timestamp}.txt;
 shasum -a 512256 otp-ascii-${timestamp}.txt >> otp-ascii-${timestamp}.txt;
-
-convert -density 600 -units pixelsperinch -size 12000x12000 xc:white -font "Monaco" -pointsize 8 -fill black -annotate +15+15 "@otp-ascii-${timestamp}.txt" -trim +repage otp-ascii-${timestamp}.png;
 
 shasum -a 512256 otp-ascii-${timestamp}.* > otp-ascii-${timestamp}.sha 
 
