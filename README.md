@@ -37,9 +37,9 @@ Indexed planes:
   - Vertical:
       - ac: ASCII Character Sequence, 33 to 126
       - bd: ASCII Character Sequence, 126 to 33
-      - xn: ASCII Number Sequence, 0 to 9
-      - yn: ASCII Number Sequence, mod 10
-      - nn: ASCII Number Sequence, 00 to 93
+      - xn: ASCII Number Sequence, Mod 10
+      - yn: ASCII Number Sequence, Mod 10
+      - nn: ASCII Number Sequence, Mod 93
   - Complex:
       - i: ASCII Character Sequence, 33 through 126, randomly shuffled
       - j: ASCII Character Sequence, 33 through 126, randomly shuffled
