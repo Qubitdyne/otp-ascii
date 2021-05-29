@@ -6,6 +6,15 @@ One-time Pad ASCII Quaternion Based Manifold Generator.
 
 Summary: otp-ascii manifolds represent a base 94 four-dimensional quaternionic projective space of planes ab, cd, ac, bd, i, j, and k. There are also three additional base 10 number sequences encoded into planes xn, yn, and nn. 20 pre-generated base 94 pseudorandom keys and four SHA 512/256 hashes are also provided. The pre-generated pseudorandom keys function as encryption cipher encoding switches for the quaternion number system, and regular expression pattern matching and transliteration can be used to arbitrarily manipulate encryption cipher encoding switches, allowing in excess of 94<sup>94</sup> unique permutations per pad. The machine's MAC address and a simple memorizable private passphrase are further used as two additional cipher encoding switches for generating unique keys. The pads are encoded and referenced via their epoch timestamp, and they're intended to be changed on a regular basis, i.g. month. This allows a user to recycle straightforward memorizable passphrases as there is no pragmatic way to derive the original passphrase by using matrix operations on systems of equations, even if you had a quantum computer.
 
+Planes:
+  - ab = +x
+  - cd = -x
+  - ac = +y
+  - bd = -y
+  - i = +z
+  - j = -z
+  - ij = k = complex imaginary number plane
+
 Legend (lines 21-23, columns 1-5):
 
 ![image](https://user-images.githubusercontent.com/22720196/120063187-94f2d100-c02b-11eb-8de5-121af6989181.png)
@@ -16,15 +25,6 @@ Line 21|a|#|b|+x||#|#|Undef
 Line 22|#|k|i|i=➰||x|y|Undef
 Line 23|c|j|d|-x||n|n|mod 10|
 VCTR|+y|j=➰|-y|ij=k=➿||mod 10|mod 10|VCTR
-
-Planes:
-  - ab = +x
-  - cd = -x
-  - ac = +y
-  - bd = -y
-  - i = +z
-  - j = -z
-  - ij = k = imaginary number plane
 
 Details:
 Keys 00, 01, 02, ..., 19: Pseudorandom ASCII Character Sequences 33 to 126, 94 characters in length
