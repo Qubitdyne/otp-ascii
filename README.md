@@ -49,12 +49,12 @@ Graph: Pseudorandom 94 by 94 Matrix, ASCII Characters 33 to 126
 
 Hashes:
  - SHA01: SHA 512/256 of Keys 00 through 19; otp-ascii string; epoch timestamp
- - SHA02: SHA 512/256 of Indexes and Graph; otp-ascii string; epoch timestamp
- - SHA03: SHA 512/256 of All Keys, Indexes, and Graph; otp-ascii string; epoch timestamp
+ - SHA02: SHA 512/256 of Indexes and Manifold; otp-ascii string; epoch timestamp
+ - SHA03: SHA 512/256 of All Keys, Indexes, and Manifold; otp-ascii string; epoch timestamp
  - SHA04: SHA 512/256 of Entire contents of otp-ascii-$(timestamp).txt file, written to otp-ascii-$(timestamp).sha
 
 
-Example Graph:
+Example Manifold:
 
 ![image](https://user-images.githubusercontent.com/22720196/120057348-f0ab6300-c007-11eb-92ae-edb609560261.png)
 
