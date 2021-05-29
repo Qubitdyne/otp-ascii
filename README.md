@@ -21,10 +21,10 @@ Legend (lines 21-23, columns 1-5):
 
 Legend|Col 1|Col 2|Col 3|VCTR||Col 4|Col 5|VCTR
 -|-|-|-|-|-|-|-|-
-Line 21|a|#|b|+x||#|#|Undef
-Line 22|#|k|i|i=➰||x|y|Undef
-Line 23|c|j|d|-x||n|n|mod 10|
-VCTR|+y|j=➰|-y|ij=k=➿||mod 10|mod 10|VCTR
+Line 21|a|#|b|+x||#|#|Shift
+Line 22|#|k|i|i=➰||x|y|
+Line 23|c|j|d|-x||n|n|Mod 10|
+VCTR|+y|j=➰|-y|ij=k=➿||Mod 10|Mod 10|VCTR
 
 Details:
 Keys 00, 01, 02, ..., 19: Pseudorandom ASCII Character Sequences 33 to 126, 94 characters in length
