@@ -24,7 +24,7 @@ Legend (lines 21-23, columns 1-5):
 |---------|-------|-------|-------|--------|---|-------|--------|--------|
 | Line 21 | a     | #     | b     | +x     |   | #     | #      | Shift  |
 | Line 22 | #     | k     | i     | i=➰    |   | l     | m      | Shift  |
-| Line 23 | C     | j     | d     | -y     |   | n     | n      | Mod 94 |
+| Line 23 | C     | j     | d     | -x     |   | n     | n      | Mod 94 |
 | VCTR    | +y    | j=➰   | -y    | ij=k=➿ |   | 0-9   | Mod 10 |        |
 
 Details:
