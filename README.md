@@ -22,8 +22,8 @@ Legend (lines 21-23, columns 1-5):
 
 | Legend  | Col 1 | Col 2 | Col 3 | VCTR   |   | Col 4 | Col 5  | Func   |
 |---------|-------|-------|-------|--------|---|-------|--------|--------|
-| Line 21 | a     | #     | b     | +x     |   | #     | #      | Shifts  |
-| Line 22 | #     | k     | i     | i=➰    |   | l     | m      | Shifts  |
+| Line 21 | a     | #     | b     | +x     |   | #     | #      | Shift  |
+| Line 22 | #     | k     | i     | i=➰    |   | l     | m      | Shift  |
 | Line 23 | C     | j     | d     | -y     |   | n     | n      | Mod 94 |
 | VCTR    | +y    | j=➰   | -y    | ij=k=➿ |   | 0-9   | Mod 10 |        |
 
