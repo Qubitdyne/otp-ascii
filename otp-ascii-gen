@@ -1,55 +1,134 @@
 #!/bin/bash
 
-# Name: otp-ascii-gen, Version: 1.4.1
+# Name: otp-ascii-gen, Version: 1.4.2
 # Description: One-time Pad ASCII Graph Generator.
 # Author: Nikolas Britton
 #     E-mail: ytvzwld.mcteezy@rxltw.nzx (caesar, 11)
 # Copyright 2021 Nikolas Britton, Apache 2.0 License
 
+export LC_CTYPE=C;
+
+declare -a index;
+declare -a index_shuf;
+
+index=($(seq 33 126));
 timestamp=$(date +%s);
 
-function horizontal-legend () {
-    printf 'ab#';
+function key-gen () {
+    for key in $(seq -w 0 19); do
+        printf "KEY${key} ";
+        < /dev/urandom tr -cd [:graph:] | tr -d '\n' | fold -w 94 | head -n 1;
+    done;
+}
+
+function check-array () {
+    for item in ${index_shuf[@]}; do
+        [[ "$item" == "$1" ]] && {
+            return 0;
+        }
+    done;
+    return 1;
+}
+
+function index-shuf () {
+    while [ "${#index_shuf[@]}" -ne "${#index[@]}" ]; do
+        rand=$[ $RANDOM % ${#index[@]} ];
+        check-array "${index[$rand]}" || {
+            index_shuf=(${index_shuf[@]} "${index[$rand]}");
+        }
+    done
+}
+
+function index-ab () {
     for ((index_ab=33;index_ab<127;index_ab++)) do
         printf "\\$(printf %03o "${index_ab}")";
     done;
-    echo;
+}
 
-    printf 'cd#';
+function index-cd () {
     for ((index_cd=126;index_cd>32;index_cd--)) do
         printf "\\$(printf %03o "${index_cd}")";
     done;
-    echo;
 }
 
-function otp-ascii () {
-    horizontal-legend;
-
-    printf '#%.0s' {1..97};
-    echo;
-
-    for ((index_ac=33,index_bd=126;index_ac<127;index_ac++,index_bd--)) do
- 	printf "\\$(printf %03o "${index_ac}")";
-	printf "\\$(printf %03o "${index_bd}")";
-        printf '#';
-        LC_CTYPE=C < /dev/urandom tr -cd [:graph:] | tr -d '\n' | fold -w 94 | head -n 1;
+function index-ac () {
+    for ((index_ac=33;index_ac<127;index_ac++)) do
+        printf "\\$(printf %03o "${index_ac}")\n";
     done;
 }
 
-echo > otp-ascii-${timestamp}.txt;
+function index-bd () {
+    for ((index_bd=126;index_bd>32;index_bd--)) do
+	      printf "\\$(printf %03o "${index_bd}")\n";
+    done;
+}
 
-for k in $(seq -w 0 20); do
-    printf "KEY$k " >> otp-ascii-${timestamp}.txt;
-    LC_CTYPE=C < /dev/urandom tr -cd [:graph:] | tr -d '\n' | fold -w 94 | head -n 1 | sed -e 's/\(.\)/\1 /g' >> otp-ascii-${timestamp}.txt;
-done;
+function index-ki () {
+    index-shuf;
+    for index_ki in "${index_shuf[@]}"; do
+        printf "\\$(printf %03o "${index_ki}")";
+    done
+    index_shuf=();
+}
 
-printf "SHA01 " >> otp-ascii-${timestamp}.txt;
-shasum -a 512256 otp-ascii-${timestamp}.txt >> otp-ascii-${timestamp}.txt;
+function index-kj () {
+    index-shuf;
+    for index_ki in "${index_shuf[@]}"; do
+        printf "\\$(printf %03o "${index_ki}")\n";
+    done
+    index_shuf=();
+}
 
-otp-ascii | sed -e 's/\(.\)/\1 /g' >> otp-ascii-${timestamp}.txt;
-printf "SHA02 " >> otp-ascii-${timestamp}.txt;
-shasum -a 512256 otp-ascii-${timestamp}.txt >> otp-ascii-${timestamp}.txt;
+function index-horizontal () {
+    index-ab; echo;
+    index-ki; echo;
+    index-cd; echo;
+}
 
-shasum -a 512256 otp-ascii-${timestamp}.* > otp-ascii-${timestamp}.sha 
+function index-vertical () {
+    paste -d '\0' <(index-ac) <(index-kj) <(index-bd) <(seq -w 0 93);
+}
 
-#rm otp-ascii-${timestamp}.txt;
+function index-key () {
+    echo 'a#b##';
+    echo '#ki##';
+    echo 'cjd##';
+}
+
+function otp-graph () {
+    < /dev/urandom tr -cd [:graph:] | tr -d '\n' | fold -w 94 | head -n 94;
+}
+
+function otp-ascii () {
+    paste -d ' ' <(index-key) <(index-horizontal);
+    paste -d ' ' <(index-vertical) <(otp-graph);
+}
+
+function sha-512256 () {
+    egrep $1 "$2" otp-ascii-${timestamp}.txt | {
+        shasum -a 512256 2>&1 | {
+            awk '{printf $1}' | {
+                sed "s/$/ otp-ascii $timestamp/";
+            };
+        }
+    }
+}
+
+touch otp-ascii-${timestamp}.txt || {
+    echo "Unable to create $(pwd)/otp-ascii-${timestamp}.txt, exiting.";
+    exit 1;
+}
+
+key-gen >> otp-ascii-${timestamp}.txt;
+
+otp-ascii >> otp-ascii-${timestamp}.txt;
+
+echo "SHA01 $(sha-512256 '-a' '^KEY[0-1][0-9]')" >> otp-ascii-${timestamp}.txt;
+echo "SHA02 $(sha-512256 '-av' '^KEY[0-1][0-9]|^SHA0[0-3]')" >> otp-ascii-${timestamp}.txt;
+echo "SHA03 $(sha-512256 '-a' '.*')" >> otp-ascii-${timestamp}.txt;
+
+shasum -a 512256 otp-ascii-${timestamp}.* > otp-ascii-${timestamp}.sha;
+
+if [[ $1 != "-s" ]]; then
+    cat otp-ascii-${timestamp}.txt otp-ascii-${timestamp}.sha;
+fi

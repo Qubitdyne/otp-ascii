@@ -1,8 +1,13 @@
 #!/bin/bash
 
-# Name: otp-ascii-pwd, Version: 0.1
+# Name: otp-ascii-pwd, Version: 0.2
 # Description: One-time Pad ASCII Graph Password Generator.
 # Author: Nikolas Britton
 #     E-mail: ytvzwld.mcteezy@rxltw.nzx (caesar, 11)
 # Copyright 2021 Nikolas Britton, Apache 2.0 License
 
+tail -n2 otp-ascii-$1.txt | head -n1 | openssl enc -aes-256-gcm -S $1 -iv $(tail -n1 otp-ascii-${1}.txt | awk '{print $1}' | md5) -base64 -A;
+
+#for i in $(echo ${private_key} | sed -e 's/\(.\)/\1 /g';); do
+#    cat otp-ascii-$1.txt | head -n 98 | tail -n 97 | awk -F ' ' "$1 ~ /v1/ {print v2}";
+#done

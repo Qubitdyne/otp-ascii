@@ -12,4 +12,5 @@ test -x /usr/local/bin/convert || {
     exit 1;
 }
 
+#sed -e 's/\(.\)/\1 /g'
 convert -density 600 -units pixelsperinch -size 12000x12000 xc:white -font "Monaco" -pointsize 8 -fill black -annotate +15+15 "@otp-ascii-${timestamp}.txt" -trim +repage otp-ascii-${timestamp}.png;
