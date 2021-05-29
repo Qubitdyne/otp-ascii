@@ -5,7 +5,7 @@ One-Time Pad ASCII Quaternion Manifold Utilities
 One-time Pad ASCII Quaternion Based Manifold Generator.
 
 Summary:
-otp-ascii manifolds represent a base 94 four-dimensional quaternionic projective space of planes ab, cd, ac, bd, i, j, and k. There are also two additional base 10 and one base 94 number sequences encoded into planes xn, yn, and nn. 20 pre-generated base 94 pseudorandom keys and four SHA 512/256 hashes are also provided. The pre-generated pseudorandom keys function as encryption cipher encoding switches for the quaternion number system, and regular expression pattern matching and transliteration can be used to arbitrarily manipulate encryption cipher encoding switches, allowing in excess of 94<sup>94</sup> unique permutations per pad. The machine's MAC address and a simple memorizable private passphrase are further used as two additional cipher encoding switches for generating unique keys. The pads are encoded and referenced via their epoch timestamp, and they're intended to be changed on a regular basis, i.g. month. This allows a user to recycle straightforward memorizable passphrases as there is no pragmatic way to derive the original passphrase by using matrix operations on systems of equations, even if you had a quantum computer.
+otp-ascii manifolds represent a base 94 four-dimensional quaternionic projective space of planes ab, cd, ac, bd, i, j, and k. There are also two additional base 10 and one base 94 number sequences encoded into planes xn, yn, and nn. 20 pre-generated base 94 pseudorandom keys and four SHA 512/256 hashes are also provided. The pre-generated pseudorandom keys function as encryption cipher encoding switches for the quaternion number system, and regular expression pattern matching and transliteration can be used to arbitrarily manipulate encryption cipher encoding switches. The machine's MAC address and a simple memorizable private passphrase are further used as two additional cipher encoding switches for generating unique keys. The pads are encoded with, and referenced by, their epoch timestamp, and they're intended to be changed on a regular basis, i.g. monthly or quarterly. This allows a user to recycle memorizable passphrases as there is no pragmatic way to derive the original passphrase by using matrix operations on systems of equations, even for quantum computers.
 
 Planes:
   - ab = +x
@@ -18,13 +18,13 @@ Planes:
 
 Legend (lines 21-23, columns 1-5):
 
-![image](https://user-images.githubusercontent.com/22720196/120063187-94f2d100-c02b-11eb-8de5-121af6989181.png)
+![image](https://user-images.githubusercontent.com/22720196/120064618-c6bb6600-c032-11eb-8448-ecdb5a1816c6.png)
 
 | Legend  | Col 1 | Col 2 | Col 3 | VCTR   |   | Col 4 | Col 5  | Func   |
 |---------|-------|-------|-------|--------|---|-------|--------|--------|
 | Line 21 | a     | #     | b     | +x     |   | #     | #      | Shift  |
 | Line 22 | #     | k     | i     | i=➰    |   | l     | m      | Shift  |
-| Line 23 | C     | j     | d     | -y     |   | n     | n      | Mod 94 |
+| Line 23 | C     | j     | d     | -x     |   | n     | n      | Mod 94 |
 | VCTR    | +y    | j=➰   | -y    | ij=k=➿ |   | 0-9   | Mod 10 |        |
 
 Details:
@@ -39,7 +39,7 @@ Indexed planes:
       - bd: ASCII Character Sequence, 126 to 33
       - xn: ASCII Number Sequence, 0 to 9
       - yn: ASCII Number Sequence, Mod 10
-      - nn: ASCII Number Sequence, Mod 93
+      - nn: ASCII Number Sequence, Mod 94
   - Complex:
       - i: ASCII Character Sequence, 33 through 126, randomly shuffled
       - j: ASCII Character Sequence, 33 through 126, randomly shuffled
@@ -49,12 +49,12 @@ Graph: Pseudorandom 94 by 94 Matrix, ASCII Characters 33 to 126
 
 Hashes:
  - SHA01: SHA 512/256 of Keys 00 through 19; otp-ascii string; epoch timestamp
- - SHA02: SHA 512/256 of Indexes and Graph; otp-ascii string; epoch timestamp
- - SHA03: SHA 512/256 of All Keys, Indexes, and Graph; otp-ascii string; epoch timestamp
+ - SHA02: SHA 512/256 of Indexes and Manifold; otp-ascii string; epoch timestamp
+ - SHA03: SHA 512/256 of All Keys, Indexes, and Manifold; otp-ascii string; epoch timestamp
  - SHA04: SHA 512/256 of Entire contents of otp-ascii-$(timestamp).txt file, written to otp-ascii-$(timestamp).sha
 
 
-Example Graph:
+Example otp-ascii manifold:
 
 ![image](https://user-images.githubusercontent.com/22720196/120057348-f0ab6300-c007-11eb-92ae-edb609560261.png)
 
