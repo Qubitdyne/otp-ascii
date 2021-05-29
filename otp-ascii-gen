@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Name: otp-ascii-gen, Version: 1.4.2
+# Name: otp-ascii-gen, Version: 1.5
 # Description: One-time Pad ASCII Graph Generator.
 # Author: Nikolas Britton
 #     E-mail: ytvzwld.mcteezy@rxltw.nzx (caesar, 11)
@@ -91,8 +91,8 @@ function index-vertical () {
 
 function index-key () {
     echo 'a#b##';
-    echo '#ki##';
-    echo 'cjd##';
+    echo '#kixy';
+    echo 'cjdnn';
 }
 
 function otp-graph () {
@@ -127,7 +127,8 @@ echo "SHA01 $(sha-512256 '-a' '^KEY[0-1][0-9]')" >> otp-ascii-${timestamp}.txt;
 echo "SHA02 $(sha-512256 '-av' '^KEY[0-1][0-9]|^SHA0[0-3]')" >> otp-ascii-${timestamp}.txt;
 echo "SHA03 $(sha-512256 '-a' '.*')" >> otp-ascii-${timestamp}.txt;
 
-shasum -a 512256 otp-ascii-${timestamp}.* > otp-ascii-${timestamp}.sha;
+printf "SHA04 " > otp-ascii-${timestamp}.sha;
+shasum -a 512256 otp-ascii-${timestamp}.txt >> otp-ascii-${timestamp}.sha;
 
 if [[ $1 != "-s" ]]; then
     cat otp-ascii-${timestamp}.txt otp-ascii-${timestamp}.sha;
