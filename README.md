@@ -1,10 +1,10 @@
 # otp-ascii
-One-Time Pad ASCII Graph Utilities
+One-Time Pad ASCII Quaternion Manifold Utilities
 
 ## otp-ascii-gen
-One-time Pad ASCII Quaternion Based Graph Generator.
+One-time Pad ASCII Quaternion Based Manifold Generator.
 
-Summary: The OTPs represent a base 94 four-dimensional matrix space of index planes ab, cd, ac, bd, i, j, and k. There are also three additional base 10 number sequences encoded into indexes xn, yn, and nn. 20 pregenerated base 94 pseudorandom keys and four SHA 512/256 hashes are also provided. The pregenerated pseudorandom keys function as encryption cipher encoding switches for the quaternion number system, and regular expression pattern matching and transliteration can be used to arbitrarily manipulate encryption cipher encoding switches, allowing in excess of 94<sup>94</sup> unique permutations. The machine's MAC address and a simple private passphrase are further used two additional cipher encoding switches for generating unique keys. The pads are encoded and refrenced with their epoch creation timestamp, and they are intented to be changed on a regular basis, i.g. month. This allows a user to recycle simple memorizable passwords as there is no way to derive the original passphrase by using matrix operations on systems of equations.
+Summary: otp-ascii manifolds represent a base 94 four-dimensional quaternionic projective space of planes ab, cd, ac, bd, i, j, and k. There are also three additional base 10 number sequences encoded into planes xn, yn, and nn. 20 pre-generated base 94 pseudorandom keys and four SHA 512/256 hashes are also provided. The pre-generated pseudorandom keys function as encryption cipher encoding switches for the quaternion number system, and regular expression pattern matching and transliteration can be used to arbitrarily manipulate encryption cipher encoding switches, allowing in excess of 94<sup>94</sup> unique permutations per pad. The machine's MAC address and a simple memorizable private passphrase are further used as two additional cipher encoding switches for generating unique keys. The pads are encoded and referenced via their epoch timestamp, and they're intended to be changed on a regular basis, i.g. month. This allows a user to recycle straightforward memorizable passphrases as there is no pragmatic way to derive the original passphrase by using matrix operations on systems of equations, even if you had a quantum computer.
 
 Planes:
   - ab = +x
@@ -18,7 +18,7 @@ Planes:
 Details:
 Keys 00, 01, 02, ..., 19: Pseudorandom ASCII Character Sequences 33 to 126, 94 characters in length
 
-Indexes:
+Indexed planes:
   - Horizontal:
       - ab: ASCII Character Sequence, 33 to 126
       - cd: ASCII Character Sequence, 126 to 33
