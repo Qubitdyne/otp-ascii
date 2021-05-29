@@ -25,7 +25,7 @@ Legend|Col 1|Col 2|Col 3|VCTR||Col 4|Col 5|VCTR
 Line 21|a|#|b|+x||#|#|Shift
 Line 22|#|k|i|i=➰||x|y|Shift
 Line 23|c|j|d|-x||n|n|Mod 94|
-VCTR|+y|j=➰|-y|ij=k=➿||Mod 10|Mod 10|VCTR
+VCTR|+y|j=➰|-y|ij=k=➿||0-9|Mod 10|VCTR
 
 Details:
 Keys 00, 01, 02, ..., 19: Pseudorandom ASCII Character Sequences 33 to 126, 94 characters in length
@@ -37,7 +37,7 @@ Indexed planes:
   - Vertical:
       - ac: ASCII Character Sequence, 33 to 126
       - bd: ASCII Character Sequence, 126 to 33
-      - xn: ASCII Number Sequence, Mod 10
+      - xn: ASCII Number Sequence, 0 to 9
       - yn: ASCII Number Sequence, Mod 10
       - nn: ASCII Number Sequence, Mod 93
   - Complex:
