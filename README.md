@@ -22,7 +22,7 @@ Legend (lines 21-23, columns 1-5):
 Legend|Col 1|Col 2|Col 3|VCTR||Col 4|Col 5|VCTR
 -|-|-|-|-|-|-|-|-
 Line 21|a|#|b|+x||#|#|Shift
-Line 22|#|k|i|i=➰||x|y|
+Line 22|#|k|i|i=➰||x|y|Shift
 Line 23|c|j|d|-x||n|n|Mod 10|
 VCTR|+y|j=➰|-y|ij=k=➿||Mod 10|Mod 10|VCTR
 
