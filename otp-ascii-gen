@@ -114,7 +114,7 @@ function sha-512256 () {
     }
 }
 
-touch otp-ascii-${timestamp}.txt || {
+touch otp-ascii-${timestamp}.{txt,sha} || {
     echo "Unable to create $(pwd)/otp-ascii-${timestamp}.txt, exiting.";
     exit 1;
 }
