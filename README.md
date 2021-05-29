@@ -4,7 +4,7 @@ One-Time Pad ASCII Graph Utilities
 ## otp-ascii-gen
 One-time Pad ASCII Quaternion Based Graph Generator
 
-Keys 00, 01, 02, ..., 19: ASCII Character Sequences 33 to 126, 94 characters in length, pseudorandom
+Keys 00, 01, 02, ..., 19: Pseudorandom ASCII Character Sequences 33 to 126, 94 characters in length
 
 Indexes:
   - Horizontal:
@@ -21,7 +21,7 @@ Indexes:
       - j: ASCII Character Sequence, 33 through 126, randomly shuffled
       - k: Product of i * j
     
-Graph: ASCII Character Sequence, 33 to 126, 94x94 pseudorandom matrix
+Graph: Pseudorandom 94 by 94 Matrix, ASCII Characters 33 to 126
 
 Hashes:
  - SHA01: SHA 512/256 of Keys 00 through 19; otp-ascii string; epoch timestamp
