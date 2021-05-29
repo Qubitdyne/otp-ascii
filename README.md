@@ -16,7 +16,7 @@ Indexes:
       - xn: ASCII Number Sequence, 0 to 9
       - yn: ASCII Number Sequence, mod 10
       - nn: ASCII Number Sequence, 00 to 93
-  Complex:
+  - Complex:
       - i: ASCII Character Sequence, 33 through 126, randomly shuffled
       - j: ASCII Character Sequence, 33 through 126, randomly shuffled
       - k: Product of i * j
