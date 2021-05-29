@@ -18,7 +18,7 @@ Planes:
 
 Legend (lines 21-23, columns 1-5):
 
-![image](https://user-images.githubusercontent.com/22720196/120063187-94f2d100-c02b-11eb-8de5-121af6989181.png)
+![image](https://user-images.githubusercontent.com/22720196/120064618-c6bb6600-c032-11eb-8448-ecdb5a1816c6.png)
 
 | Legend  | Col 1 | Col 2 | Col 3 | VCTR   |   | Col 4 | Col 5  | Func   |
 |---------|-------|-------|-------|--------|---|-------|--------|--------|
