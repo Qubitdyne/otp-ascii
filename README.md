@@ -41,8 +41,8 @@ Indexed planes:
       - yn: ASCII Number Sequence, Mod 10
       - nn: ASCII Number Sequence, Mod 94
   - Complex:
-      - i: ASCII Character Sequence, 33 through 126, randomly shuffled 1:1
-      - j: ASCII Character Sequence, 33 through 126, randomly shuffled 1:1
+      - i: ASCII Character Sequence, 33 through 126, randomly shuffled
+      - j: ASCII Character Sequence, 33 through 126, randomly shuffled
       - k: Product of i * j
     
 Graph: Pseudorandom 94 by 94 Matrix, ASCII Characters 33 to 126
