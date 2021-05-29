@@ -54,7 +54,7 @@ Hashes:
  - SHA04: SHA 512/256 of Entire contents of otp-ascii-$(timestamp).txt file, written to otp-ascii-$(timestamp).sha
 
 
-Example Manifold:
+Example otp-ascii manifold:
 
 ![image](https://user-images.githubusercontent.com/22720196/120057348-f0ab6300-c007-11eb-92ae-edb609560261.png)
 
