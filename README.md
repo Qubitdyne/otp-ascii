@@ -11,7 +11,7 @@ Planes:
   - bd = -y
   - i = +z
   - j = -z
-  - k = imaginary number plane
+  - ij = k = imaginary number plane
 
 Details:
 Keys 00, 01, 02, ..., 19: Pseudorandom ASCII Character Sequences 33 to 126, 94 characters in length
