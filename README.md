@@ -2,7 +2,7 @@
 One-Time Pad ASCII Graph Utilities
 
 ## otp-ascii-gen
-One-time Pad ASCII Quaternion Based Graph Generator. A pad represents a base 94 four-dimensional matrix space of index planes ab, cd, ac, bd, i, j, and k. There are also three additional base 10 number sequences encoded into indexes xn, yn, and nn. 20 pregenerated pseudorandom keys of base 94 and four SHA 512/256 hashes are also provided. The 20 pregenerated pseudorandom keys function as encryption cipher encoding switches for the quaternion matrix.
+One-time Pad ASCII Quaternion Based Graph Generator. A pad represents a base 94 four-dimensional matrix space of index planes ab, cd, ac, bd, i, j, and k. There are also three additional base 10 number sequences encoded into indexes xn, yn, and nn. 20 pregenerated pseudorandom keys of base 94 and four SHA 512/256 hashes are also provided. The pregenerated pseudorandom keys function as encryption cipher encoding switches for the quaternion matrix.
 
 Planes:
   - ab = +x
