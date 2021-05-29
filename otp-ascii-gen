@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Name: otp-ascii-gen, Version: 1.5.1
+# Name: otp-ascii-gen, Version: 1.5.2
 # Description: One-time Pad ASCII Graph Generator.
 # Author: Nikolas Britton
 #     E-mail: ytvzwld.mcteezy@rxltw.nzx (caesar, 11)
-# Copyright 2021 Nikolas Britton, Apache 2.0 License
+# Copyright © 2021 Nikolas Britton (DBA Qubitdyne), All Rights Reserved.
 
 export LC_CTYPE=C;
 
