@@ -2,7 +2,7 @@
 One-Time Pad ASCII Graph Utilities
 
 ## otp-ascii-gen
-One-time Pad ASCII Quaternion Based Graph Generator
+One-time Pad ASCII Quaternion Based Graph Generator. A pad represents a base 94 six-dimensional matrix space of index planes ab, cd, ac, bd, i, j, and k. There are also three additional base 10 number sequences encoded into indexes xn, xy, and nn. 20 pregenerated pseudorandom keys of base 94 and four SHA 512/256 hashes are also provided.
 
 Keys 00, 01, 02, ..., 19: Pseudorandom ASCII Character Sequences 33 to 126, 94 characters in length
 
@@ -28,6 +28,7 @@ Hashes:
  - SHA02: SHA 512/256 of Indexes and Graph; otp-ascii string; epoch timestamp
  - SHA03: SHA 512/256 of All Keys, Indexes, and Graph; otp-ascii string; epoch timestamp
  - SHA04: SHA 512/256 of Entire contents of otp-ascii-$(timestamp).txt file, written to otp-ascii-$(timestamp).sha
+
 
 Example Graph:
 
