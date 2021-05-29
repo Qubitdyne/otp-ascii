@@ -20,12 +20,12 @@ Legend (lines 21-23, columns 1-5):
 
 ![image](https://user-images.githubusercontent.com/22720196/120063187-94f2d100-c02b-11eb-8de5-121af6989181.png)
 
-Legend|Col 1|Col 2|Col 3|VCTR||Col 4|Col 5|VCTR
--|-|-|-|-|-|-|-|-
-Line 21|a|#|b|+x||#|#|Shift
-Line 22|#|k|i|i=➰||x|y|Shift
-Line 23|c|j|d|-x||n|n|Mod 94|
-VCTR|+y|j=➰|-y|ij=k=➿||0-9|Mod 10|VCTR
+| Legend  | Col 1 | Col 2 | Col 3 | VCTR   |   | Col 4 | Col 5  | Func   |
+|---------|-------|-------|-------|--------|---|-------|--------|--------|
+| Line 21 | a     | #     | b     | +x     |   | #     | #      | Shift  |
+| Line 22 | #     | k     | i     | i=➰    |   | l     | m      | Shift  |
+| Line 23 | C     | j     | d     | -y     |   | n     | n      | Mod 94 |
+| VCTR    | +y    | j=➰   | -y    | ij=k=➿ |   | 0-9   | Mod 10 |        |
 
 Details:
 Keys 00, 01, 02, ..., 19: Pseudorandom ASCII Character Sequences 33 to 126, 94 characters in length
