@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Name: otp-ascii-gen, Version: 1.5
+# Name: otp-ascii-gen, Version: 1.5.1
 # Description: One-time Pad ASCII Graph Generator.
 # Author: Nikolas Britton
 #     E-mail: ytvzwld.mcteezy@rxltw.nzx (caesar, 11)
@@ -91,7 +91,7 @@ function index-vertical () {
 
 function index-key () {
     echo 'a#b##';
-    echo '#kixy';
+    echo '#kilm';
     echo 'cjdnn';
 }
 
