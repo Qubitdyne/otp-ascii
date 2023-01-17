@@ -1,0 +1,131 @@
+#!/bin/bash
+
+# Name: otp-base64-gen, Version: 1.1
+# Description: One-time Pad Base64 Manifold Generator.
+# Author: Nikolas J. Britton
+# Copyright © 2022 Qubitdyne, Inc. All Rights Reserved.
+
+export LC_CTYPE=C;
+
+declare -a index;
+declare -a index_shuf;
+
+index=(43 $(seq 47 57) $(seq 65 90) $(seq 97 122));
+timestamp=$(date +%s);
+
+function key-gen () {
+    for key in $(seq -w 0 19); do
+        printf "KEY${key} ";
+        < /dev/urandom tr -cd A-Za-z0-9+/ | tr -d '\n' | fold -w 64 | head -n 1;
+    done;
+}
+
+function check-array () {
+    for item in ${index_shuf[@]}; do
+        [[ "$item" == "$1" ]] && {
+            return 0;
+        }
+    done;
+    return 1;
+}
+
+function index-shuf () {
+    while [ "${#index_shuf[@]}" -ne "${#index[@]}" ]; do
+        rand=$[ $RANDOM % ${#index[@]} ];
+        check-array "${index[$rand]}" || {
+            index_shuf=(${index_shuf[@]} "${index[$rand]}");
+        }
+    done
+}
+
+function index-ab () {
+    for index_ab in 43 $(seq 47 57) $(seq 65 90) $(seq 97 122); do
+        printf "\\$(printf %03o "${index_ab}")";
+    done;
+}
+
+function index-cd () {
+    for index_cd in $(seq 122 97) $(seq 90 65) $(seq 57 47) 43; do
+        printf "\\$(printf %03o "${index_cd}")";
+    done;
+}
+
+function index-ac () {
+    for index_ac in 43 $(seq 47 57) $(seq 65 90) $(seq 97 122); do
+        printf "\\$(printf %03o "${index_ac}")\n";
+    done;
+}
+
+function index-bd () {
+    for index_bd in $(seq 122 97) $(seq 90 65) $(seq 57 47) 43; do
+        printf "\\$(printf %03o "${index_bd}")\n";
+    done;
+}
+
+function index-ki () {
+    index-shuf;
+    for index_ki in "${index_shuf[@]}"; do
+        printf "\\$(printf %03o "${index_ki}")";
+    done
+    index_shuf=();
+}
+
+function index-kj () {
+    index-shuf;
+    for index_ki in "${index_shuf[@]}"; do
+        printf "\\$(printf %03o "${index_ki}")\n";
+    done
+    index_shuf=();
+}
+
+function index-horizontal () {
+    index-ab; echo;
+    index-ki; echo;
+    index-cd; echo;
+}
+
+function index-vertical () {
+    paste -d '\0' <(index-ac) <(index-kj) <(index-bd) <(seq -w 0 63);
+}
+
+function index-key () {
+    echo 'a#b##';
+    echo '#kilm';
+    echo 'cjdnn';
+}
+
+function otp-graph () {
+    < /dev/urandom tr -cd A-Za-z0-9+/ | tr -d '\n' | fold -w 64 | head -n 64;
+}
+
+function otp-ascii () {
+    paste -d ' ' <(index-key) <(index-horizontal);
+    paste -d ' ' <(index-vertical) <(otp-graph);
+}
+
+function sha-512256 () {
+    egrep $1 "$2" ${timestamp}.otp | {
+        shasum -a 512256 2>&1 | {
+            awk '{printf $1}';
+        }
+    }
+}
+
+touch ${timestamp}.{txt,sha} || {
+    echo "Unable to create $(pwd)/${timestamp}.otp, exiting.";
+    exit 1;
+}
+
+key-gen >> ${timestamp}.otp;
+
+otp-ascii >> ${timestamp}.otp;
+
+echo "SHA01 $(sha-512256 '-a' '^KEY[0-1][0-9]')" >> ${timestamp}.otp;
+echo "SHA02 $(sha-512256 '-av' '^KEY[0-1][0-9]|^SHA0[0-3]')" >> ${timestamp}.otp;
+echo "SHA03 $(sha-512256 '-a' '.*')" >> ${timestamp}.otp;
+shasum -a 512256 ${timestamp}.otp | awk '{print "SHA04 "$1}' >> ${timestamp}.otp;
+
+if [[ $1 != "-s" ]]; then
+    cat ${timestamp}.otp;
+    echo ${timestamp};
+fi
