@@ -111,7 +111,7 @@ function sha-512256 () {
     }
 }
 
-touch ${timestamp}.{txt,sha} || {
+touch ${timestamp}.otp || {
     echo "Unable to create $(pwd)/${timestamp}.otp, exiting.";
     exit 1;
 }
