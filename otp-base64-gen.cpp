@@ -12,6 +12,7 @@
 #include <random>
 #include <cstdio>
 #include <unistd.h>
+#include <fstream>
 
 using namespace std;
 
